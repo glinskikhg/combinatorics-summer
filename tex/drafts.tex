@@ -1,0 +1,38 @@
+\documentclass[a4,12pt]{article}
+
+\usepackage[russian]{babel}
+\usepackage[utf8x]{inputenc}
+
+\author{Гера Глинских}
+\title{Заметки к статье по генетическим алгоритмам}
+
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{hyperref}
+
+\theoremstyle{remark}
+\newtheorem{defi}{Определение}
+\newtheorem{stmt}{Утверждение}
+
+\newcommand{\bdd}{\mathcal{D}}
+\newcommand{\bdp}{\mathcal{P}}
+\newcommand{\bdb}{\mathcal{B}}
+\newcommand{\bdi}{\mathcal{I}}
+
+\begin{document}
+
+\maketitle{}
+
+\section{\href{https://github.com/glinskikhg/combinatorics-summer/blob/f136271012f137d1f71936810deeffd4e36ccef6/docs/talk_zrinski-1.pdf}{Доклад Зриньски}}
+
+\begin{defi}
+\textbf{Блок-дизайном $\bdd$ с параметрами $t-(v,k,\lambda)$} назовем конечную инцидентную структуру $(\bdp,\bdb,\bdi)$, где $\bdp$ (точки) и $\bdb$ (блоки) не пересекаются, $\bdi \subset \bdp \times \bdb$ и
+\begin{enumerate}
+    \item $|\bdp| = v$ и $1 < k < v - 1$,
+    \item каждый блок $\bdb$ инцидентен ровно с $k$ точками $\bdp$,
+    \item каждые $t$ точек $\bdp$ инцидентны ровно $\lambda$ блокам $\bdb$.
+\end{enumerate}
+\end{defi}
+
+
+
+\end{document}
