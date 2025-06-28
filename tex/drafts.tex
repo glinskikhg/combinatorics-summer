@@ -4,7 +4,7 @@
 \usepackage[utf8x]{inputenc}
 
 \author{Гера Глинских}
-\title{Заметки к статье по генетическим алгоритмам}
+\title{Заметки к работе по генетическим алгоритмам}
 
 \usepackage{amsmath,amsfonts,amsthm}
 \usepackage{hyperref}
@@ -12,11 +12,15 @@
 \theoremstyle{remark}
 \newtheorem{defi}{Определение}
 \newtheorem{stmt}{Утверждение}
+\newtheorem{cons}{Конструкция}
 
 \newcommand{\bdd}{\mathcal{D}}
 \newcommand{\bdp}{\mathcal{P}}
 \newcommand{\bdb}{\mathcal{B}}
 \newcommand{\bdi}{\mathcal{I}}
+\newcommand{\bd}[4]{\operatorname{#1-(#2,#3,#4)}}
+
+\newcommand{\aut}[1]{\operatorname{Aut}(#1)}
 
 \begin{document}
 
@@ -25,13 +29,41 @@
 \section{\href{https://github.com/glinskikhg/combinatorics-summer/blob/f136271012f137d1f71936810deeffd4e36ccef6/docs/talk_zrinski-1.pdf}{Доклад Зриньски}}
 
 \begin{defi}
-\textbf{Блок-дизайном $\bdd$ с параметрами $t-(v,k,\lambda)$} назовем конечную инцидентную структуру $(\bdp,\bdb,\bdi)$, где $\bdp$ (точки) и $\bdb$ (блоки) не пересекаются, $\bdi \subset \bdp \times \bdb$ и
+\textbf{Блок-дизайном $\bdd$ с параметрами $\bd{t}{v}{k}{\lambda}$} назовем конечную инцидентную структуру $(\bdp,\bdb,\bdi)$, где $\bdp$ (точки) и $\bdb$ (блоки) не пересекаются, $\bdi \subset \bdp \times \bdb$ и
 \begin{enumerate}
     \item $|\bdp| = v$ и $1 < k < v - 1$,
     \item каждый блок $\bdb$ инцидентен ровно с $k$ точками $\bdp$,
     \item каждые $t$ точек $\bdp$ инцидентны ровно $\lambda$ блокам $\bdb$.
 \end{enumerate}
 \end{defi}
+
+Договоримся обозначать через $r$ число блоков, с которыми инцидентна каждая точка, через $b$ -- число блоков.
+
+\begin{defi}
+\textbf{Системой Штейнера $S(t,k,v)$} назовем блок-дизайн с парамерами $\bd{t}{v}{k}{1}$.
+\end{defi}
+
+В докладе конструируются системы Штейнера $S(2,5,45)$ при помощи изучения групп автоморфизмов блок-дизайнов и матриц подходящего вида. Опишем их.
+
+\begin{cons}
+Зафиксируем $\bdd = (\bdp,\bdb,\bdi)$ -- $\operatorname{2-(v,k,\lambda)} дизайн$. Пусть у группы $G \le \aut{\bdd}$ отбиты точек $\{\bdp_1,\ldots,\bdp_m\}$, орбиты блоков $\{\bdb_1,\ldots,\bdb_n\}$. Обозначим длины орбит $|\bdp_i| = \nu_i$, $|\bdb_j| = \beta_j$.
+
+Построим матрицу $A = (a_{ij})$, где $a_{ij}$ - число блоков $\bdb_j$, инцидентных представителю орбиты $\bdp_i$. Для этой матрицы имеют место неравенства:
+\begin{enumerate}
+\item $0 \le a_{ij} \le \beta_j$,
+\item $\sum_j a_{ij} = r$,
+\item $\sum_i {\nu_i \over \beta_j} a_{ij} = k$,
+\item $\sum_j {\nu_t \over \beta_j} a_{sj} a_{tj} = \lambda \nu_t + \delta_{st}(r-\lambda)$.
+\end{enumerate}
+
+Любую матрицу, удовлетворяющую этим свойствам, условимся называть матрицей орбит.
+\end{cons}
+
+Идея их использования следующая: для группы автоморфизмов строим матрицу орбит, по матрице орбит строим блок-дизайн. Второй шаг назовем (индексированием?) размечиванием матрицы орбит.
+
+Размечивание обычно происходит полным перебором, но для больших блок-дизайнов задача становится слишком трудной. Попробуем использовать генетический алгоритм для этой задачи.
+
+
 
 
 
