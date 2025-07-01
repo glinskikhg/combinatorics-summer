@@ -1,5 +1,6 @@
 # Output files (may be omitted)
 *.pdf
+!docs/*.pdf
 
 # MacOS specific
 **/.DS_Store
